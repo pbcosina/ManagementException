@@ -11,12 +11,24 @@ public class Customer extends Person {
         System.out.println(getName() + " is browsing through");
     }
 
-    /**
-     * TODO implementation
-     * @param e employee to be spoken to
-     * @return the dialogue of the customer
-     */
+//    /**
+//     * TODO implementation
+//     * @param e employee to be spoken to
+//     * @return the dialogue of the customer
+//     */
+
     public String speak(Employee e) {
-        return null;
+        if (e instanceof Developer) {
+            Developer developer = (Developer) e;
+            if (this.getAge() > developer.getAge()) {
+                return "Can I see your manager " + (developer.getProjectManager() != null ? developer.getProjectManager().getName() : "?");
+            }
+        }
+        return "Oh, hello, " + e.getName() + ". Can you assist me?";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

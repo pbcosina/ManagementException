@@ -1,6 +1,10 @@
 package Management_Exc;
 
-public abstract class Person {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+abstract class Person {
     private final String name;
     private int age;
 
@@ -10,13 +14,13 @@ public abstract class Person {
      * @param age the age of the person
      * @throws IllegalArgumentException when age is negative
      */
-    public Person(String name, int age) {
-        this.name = name;
-    }
 
-    @Override
-    public String toString() {
-        return name + " (" + age + ")";
+    public Person(String name, int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age must be non-negative");
+        }
+        this.name = name;
+        this.age = age;
     }
 
     public String getName() {
@@ -33,4 +37,9 @@ public abstract class Person {
     }
 
     public abstract void performTask();
+
+    @Override
+    public String toString() {
+        return name + " (" + age + ")";
+    }
 }
